@@ -1,10 +1,15 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 import Spline from '@splinetool/react-spline';
 import { Play, Pause } from 'lucide-react';
 
 export default function Hero() {
   const splineRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const handleToggle = useCallback(() => {
+    setIsPlaying((p) => !p);
+  }, []);
 
   return (
     <section className="pt-10 sm:pt-16 lg:pt-20">
@@ -25,12 +30,14 @@ export default function Hero() {
               href="https://drive.google.com/"
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-medium shadow hover:brightness-110">
+              className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-medium shadow hover:brightness-110"
+            >
               View Resume
             </a>
             <button
-              onClick={() => setIsPlaying((p) => !p)}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:text-white hover:border-white/20 bg-white/5">
+              onClick={handleToggle}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-white/10 text-gray-200 hover:text-white hover:border-white/20 bg-white/5"
+            >
               {isPlaying ? <Pause size={16} /> : <Play size={16} />}
               {isPlaying ? 'Pause' : 'Play'} Animation
             </button>
@@ -43,6 +50,7 @@ export default function Hero() {
             <Spline
               ref={splineRef}
               scene="https://prod.spline.design/placeholder/scene.splinecode"
+              onLoad={() => setIsLoaded(true)}
               style={{ width: '100%', height: '100%' }}
             />
           </div>
@@ -50,6 +58,22 @@ export default function Hero() {
           {/* Non-blocking gradient glows */}
           <div className="pointer-events-none absolute -inset-20 bg-gradient-to-tr from-cyan-500/20 via-transparent to-fuchsia-500/20 blur-3xl" />
           <div className="pointer-events-none absolute inset-0 ring-1 ring-white/10 rounded-2xl" />
+
+          {/* Non-freezing paused indicator (does not block interactions) */}
+          {!isPlaying && (
+            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div className="pointer-events-none px-3 py-1.5 rounded-full text-xs font-medium text-white/90 bg-black/30 border border-white/10 backdrop-blur">
+                Paused
+              </div>
+            </div>
+          )}
+
+          {/* Loading shimmer (non-blocking) */}
+          {!isLoaded && (
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent animate-pulse" />
+            </div>
+          )}
         </div>
       </div>
     </section>
