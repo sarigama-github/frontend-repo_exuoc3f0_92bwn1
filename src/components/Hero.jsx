@@ -1,34 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import { Mail, Phone, Github, Linkedin, ExternalLink, Pause, Play } from 'lucide-react';
 import Spline from '@splinetool/react-spline';
 
 const RESUME_URL = 'https://drive.google.com/file/d/1WbnSUS8kpuVoXtuEG6fq1DKRsDhsuPsX/view?usp=sharing';
 
 const Hero = () => {
-  const cardRef = useRef(null);
-  const frameRef = useRef(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
-
-  const handleMouseMove = (e) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const px = (x / rect.width) * 2 - 1; // -1 to 1
-    const py = (y / rect.height) * 2 - 1; // -1 to 1
-    const maxDeg = 8;
-    const target = { rx: -(py * maxDeg), ry: px * maxDeg };
-
-    cancelAnimationFrame(frameRef.current);
-    frameRef.current = requestAnimationFrame(() => setTilt(target));
-  };
-
-  const handleMouseLeave = () => {
-    cancelAnimationFrame(frameRef.current);
-    frameRef.current = requestAnimationFrame(() => setTilt({ rx: 0, ry: 0 }));
-  };
 
   return (
     <section id="home" className="relative overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-900 text-white">
@@ -83,19 +60,11 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* 3D Spline scene in the visual area with tilt & controls */}
+          {/* 3D Spline scene with play/pause control (no tilt) */}
           <div className="relative">
             <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/10 to-fuchsia-500/10 blur-2xl" />
 
-            <div
-              ref={cardRef}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              style={{
-                transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
-                transition: 'transform 120ms ease-out',
-              }}
-              className="relative h-80 w-full overflow-hidden rounded-2xl border border-white/10 bg-gray-900/60 shadow-xl md:h-[420px]">
+            <div className="relative h-80 w-full overflow-hidden rounded-2xl border border-white/10 bg-gray-900/60 shadow-xl md:h-[420px]">
               {/* Play/Pause button */}
               <button
                 type="button"
@@ -107,7 +76,6 @@ const Hero = () => {
                 <span className="hidden sm:inline">{isPlaying ? 'Pause' : 'Play'}</span>
               </button>
 
-              {/* Scene or paused poster */}
               {isPlaying ? (
                 <Spline
                   scene="https://prod.spline.design/fA4LwfT7IUUelEGO/scene.splinecode"
