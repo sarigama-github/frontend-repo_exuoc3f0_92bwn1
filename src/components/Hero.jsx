@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Phone, Github, Linkedin, ExternalLink } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ExternalLink, Laptop } from 'lucide-react';
 
 const RESUME_URL = 'https://drive.google.com/file/d/1WbnSUS8kpuVoXtuEG6fq1DKRsDhsuPsX/view?usp=sharing';
 
@@ -19,7 +19,7 @@ const Hero = () => {
               Hi, I’m Naman Sinha
             </h1>
             <p className="mt-4 text-lg text-gray-200">
-              I’m an aspiring Frontend and Android App Developer passionate about turning creative ideas into sleek, interactive digital experiences. Curious by nature, I constantly explore new tools and technologies to push the boundaries of creativity and code. I enjoy designing intuitive interfaces and developing impactful products that solve real-world problems.
+              Aspiring Frontend and Android developer crafting sleek, accessible interfaces and interactive apps. Always exploring fresh tools to turn ideas into polished, real‑world products.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-gray-200">
@@ -61,6 +61,10 @@ const Hero = () => {
           <div className="relative">
             <div className="pointer-events-none absolute inset-0 -z-0 rounded-3xl bg-gradient-to-br from-cyan-400/10 to-fuchsia-500/10 blur-2xl" />
             <div className="relative rounded-2xl border border-white/10 bg-gray-900/60 p-6">
+              {/* Laptop graphic above About Me */}
+              <div className="mx-auto -mt-2 mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-cyan-300 shadow-inner">
+                <Laptop size={26} />
+              </div>
               <h3 className="text-lg font-semibold">About Me</h3>
               <p className="mt-2 text-slate-300">
                 I balance design thinking with practical engineering to ship calm, accessible, and fast user experiences across web and mobile.
