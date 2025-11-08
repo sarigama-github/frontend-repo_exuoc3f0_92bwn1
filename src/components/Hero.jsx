@@ -1,38 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Spline from '@splinetool/react-spline';
 import { Play, Pause } from 'lucide-react';
 
 export default function Hero() {
   const splineRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [ready, setReady] = useState(false);
-
-  // Handle prefers-reduced-motion: auto-pause
-  useEffect(() => {
-    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (media.matches) setIsPlaying(false);
-  }, []);
-
-  // Wire up play/pause to Spline runtime without freezing the card
-  // We avoid blocking UI: we only pause the Spline scene, not the container
-  useEffect(() => {
-    const app = splineRef.current?.spline;
-    if (!app || !ready) return;
-
-    try {
-      if (isPlaying) {
-        // resume the scene if previously paused
-        if (typeof app.play === 'function') app.play();
-        if (typeof app.resume === 'function') app.resume();
-      } else {
-        // pause the Spline render loop
-        if (typeof app.pause === 'function') app.pause();
-        if (typeof app.stop === 'function') app.stop();
-      }
-    } catch (e) {
-      // Fail silently if runtime API differs
-    }
-  }, [isPlaying, ready]);
 
   return (
     <section className="pt-10 sm:pt-16 lg:pt-20">
@@ -67,11 +39,10 @@ export default function Hero() {
 
         <div className="relative h-[380px] sm:h-[480px] lg:h-[520px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-b from-gray-900 to-gray-950">
           {/* Spline Canvas */}
-          <div className="absolute inset-0">
+          <div className={`absolute inset-0 ${!isPlaying ? 'pointer-events-none' : ''}`}>
             <Spline
               ref={splineRef}
               scene="https://prod.spline.design/placeholder/scene.splinecode"
-              onLoad={() => setReady(true)}
               style={{ width: '100%', height: '100%' }}
             />
           </div>
@@ -79,15 +50,6 @@ export default function Hero() {
           {/* Non-blocking gradient glows */}
           <div className="pointer-events-none absolute -inset-20 bg-gradient-to-tr from-cyan-500/20 via-transparent to-fuchsia-500/20 blur-3xl" />
           <div className="pointer-events-none absolute inset-0 ring-1 ring-white/10 rounded-2xl" />
-
-          {/* Paused state message overlay (does not freeze the card) */}
-          {!isPlaying && (
-            <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-              <div className="px-3 py-1.5 rounded-md bg-black/50 text-gray-100 text-xs border border-white/10">
-                Animation paused — press Play to resume
-              </div>
-            </div>
-          )}
         </div>
       </div>
     </section>
