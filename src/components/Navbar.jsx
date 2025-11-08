@@ -1,39 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, Github, Linkedin } from 'lucide-react';
+import React from 'react';
+import { Menu } from 'lucide-react';
 
-const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  const navClick = (e, id) => {
-    e.preventDefault();
-    const el = document.querySelector(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
+export default function Navbar() {
   return (
-    <header className={`sticky top-0 z-50 transition-all ${scrolled ? 'backdrop-blur bg-gray-900/70 border-b border-white/10' : 'bg-transparent'}`}>
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
-        <a href="#home" onClick={(e) => navClick(e, '#home')} className="font-semibold tracking-tight text-white">Naman Sinha</a>
-        <div className="hidden items-center gap-6 text-sm text-gray-200 md:flex">
-          <a href="#projects" onClick={(e) => navClick(e, '#projects')} className="hover:text-white">Projects</a>
-          <a href="#experience" onClick={(e) => navClick(e, '#experience')} className="hover:text-white">Experience</a>
-          <a href="#skills" onClick={(e) => navClick(e, '#skills')} className="hover:text-white">Skills</a>
-          <a href="#contact" onClick={(e) => navClick(e, '#contact')} className="hover:text-white">Reach Out</a>
-        </div>
-        <div className="flex items-center gap-2">
-          <a href="mailto:get2naman@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-200 hover:bg-white/10"><Mail size={14} /> Email</a>
-          <a href="https://github.com/get2naman-bit" target="_blank" rel="noreferrer" className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-200 hover:bg-white/10 sm:inline-flex items-center gap-2"><Github size={14} /> GitHub</a>
-          <a href="https://linkedin.com/in/naman-sinha-986511248" target="_blank" rel="noreferrer" className="hidden rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-200 hover:bg-white/10 sm:inline-flex items-center gap-2"><Linkedin size={14} /> LinkedIn</a>
-        </div>
-      </nav>
+    <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-gray-950/70 bg-gray-950/90 border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#" className="font-semibold tracking-tight text-white">Naman Sinha</a>
+        <nav className="hidden md:flex items-center gap-6 text-sm text-gray-300">
+          <a href="#projects" className="hover:text-white transition">Projects</a>
+          <a href="#about" className="hover:text-white transition">About</a>
+          <a href="#contact" className="hover:text-white transition">Contact</a>
+          <a
+            href="https://drive.google.com/"
+            target="_blank"
+            rel="noreferrer"
+            className="px-3 py-1.5 rounded-md bg-gradient-to-r from-cyan-500 to-fuchsia-500 text-white font-medium shadow">
+            Resume
+          </a>
+        </nav>
+        <button className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-md border border-white/10 text-gray-300 hover:text-white">
+          <Menu size={18} />
+        </button>
+      </div>
     </header>
   );
-};
-
-export default Navbar;
+}

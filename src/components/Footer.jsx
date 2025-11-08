@@ -1,20 +1,16 @@
 import React from 'react';
-import { Sparkles } from 'lucide-react';
 
-const Footer = () => {
+export default function Footer() {
   return (
-    <footer className="bg-slate-900 py-10 text-slate-300">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm">© {new Date().getFullYear()} Naman Sinha. Crafted with care and a dash of playfulness.</p>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs">
-            <Sparkles className="h-4 w-4 text-cyan-300" />
-            <span>Open to internships & freelance</span>
-          </div>
+    <footer className="mt-16 border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+        <p>© {new Date().getFullYear()} Naman Sinha. All rights reserved.</p>
+        <div className="flex items-center gap-4">
+          <a href="#" className="hover:text-white">Twitter</a>
+          <a href="#" className="hover:text-white">GitHub</a>
+          <a href="#" className="hover:text-white">LinkedIn</a>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

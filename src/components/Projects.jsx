@@ -1,75 +1,43 @@
 import React from 'react';
-import { ExternalLink } from 'lucide-react';
 
 const projects = [
   {
-    title: 'MindMate',
-    desc: 'Mental health assistant and counselling platform with AI chatbot, resources and community groups.',
-    link: 'https://hpsc.tiiny.site',
-    stack: ['HTML', 'CSS', 'React', 'JavaScript'],
+    title: 'Interactive Dashboard',
+    desc: 'A performant, responsive admin dashboard with charts and real-time data.',
+    tech: ['React', 'Vite', 'Tailwind'],
   },
   {
-    title: 'AI Credit Score Manager',
-    desc: 'AI-approved credit score from daily utility bill behavior with clean insights.',
-    link: 'https://creditscore-main.onrender.com',
-    stack: ['HTML', 'CSS', 'React', 'JavaScript'],
+    title: '3D Product Showcase',
+    desc: 'A Spline-powered landing page highlighting a new hardware product.',
+    tech: ['React', 'Spline', 'Framer Motion'],
   },
   {
-    title: 'Bus/Train Ticket Booking System',
-    desc: 'Smart ticket and seat management with downloadable tickets and mock payments.',
-    link: 'https://booksmmart.netlify.app',
-    stack: ['HTML', 'CSS', 'React', 'JavaScript'],
-  },
-  {
-    title: 'TruthLensAI',
-    desc: 'Trustworthiness detection for news with credibility scores and verified sources.',
-    link: 'https://truth-guard-ai-08a116dd.base44.app',
-    stack: ['HTML', 'CSS', 'React', 'JavaScript'],
-  },
-  {
-    title: 'Cricscard',
-    desc: 'Live cricket and football scores with league tables and standings.',
-    link: 'https://cricscard.netlify.app',
-    stack: ['HTML', 'CSS', 'React', 'JavaScript'],
-  },
-  {
-    title: 'Juswipe (Upcoming)',
-    desc: 'Personalized news swiping app that learns from left/right swipes.',
-    link: '#',
-    stack: ['React Native', 'Flutter'],
+    title: 'Design System',
+    desc: 'Reusable UI library and tokens applied across multiple apps.',
+    tech: ['TypeScript', 'Storybook'],
   },
 ];
 
-const Projects = () => {
+export default function Projects() {
   return (
-    <section id="projects" className="relative z-10 bg-slate-950 py-20 text-white">
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-10 flex items-end justify-between">
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Selected Projects</h2>
-            <p className="mt-2 text-slate-300">A few highlights of things I’ve built and shipped recently.</p>
-          </div>
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {projects.map((p) => (
-            <a key={p.title} href={p.link} target="_blank" rel="noreferrer" className="group rounded-xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10">
-              <div className="flex items-start justify-between">
-                <h3 className="text-lg font-semibold">{p.title}</h3>
-                <ExternalLink className="h-4 w-4 opacity-60 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100" />
-              </div>
-              <p className="mt-2 text-sm text-slate-300">{p.desc}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {p.stack.map((s) => (
-                  <span key={s} className="rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-slate-200">{s}</span>
-                ))}
-              </div>
-            </a>
-          ))}
-        </div>
+    <section id="projects" className="py-14 sm:py-20">
+      <div className="mb-8">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white">Projects</h2>
+        <p className="text-gray-400">Selected work that blends performance and design.</p>
+      </div>
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p) => (
+          <article key={p.title} className="p-5 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition">
+            <h3 className="text-lg font-semibold text-white">{p.title}</h3>
+            <p className="mt-2 text-gray-300 text-sm leading-relaxed">{p.desc}</p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {p.tech.map((t) => (
+                <span key={t} className="text-xs px-2 py-1 rounded bg-white/10 text-gray-200">{t}</span>
+              ))}
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
-};
-
-export default Projects;
+}

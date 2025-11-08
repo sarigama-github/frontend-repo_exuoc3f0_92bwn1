@@ -1,24 +1,18 @@
 import React from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Projects from './components/Projects';
-import Experience from './components/Experience';
-import Skills from './components/Skills';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import Projects from './components/Projects.jsx';
+import Footer from './components/Footer.jsx';
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-gray-950 text-white">
+    <div className="min-h-screen bg-gray-950 text-gray-100 antialiased">
       <Navbar />
-      <Hero />
-      <Projects />
-      <Experience />
-      <Skills />
-      <Contact />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <Hero />
+        <Projects />
+      </main>
       <Footer />
     </div>
   );
 }
-
-export default App;
