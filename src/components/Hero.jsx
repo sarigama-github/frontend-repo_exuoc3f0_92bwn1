@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, Github, Linkedin, ExternalLink, Laptop } from 'lucide-react';
+import { Mail, Phone, Github, Linkedin, ExternalLink } from 'lucide-react';
+import Spline from '@splinetool/react-spline';
 
 const RESUME_URL = 'https://drive.google.com/file/d/1WbnSUS8kpuVoXtuEG6fq1DKRsDhsuPsX/view?usp=sharing';
 
@@ -57,23 +58,14 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Simple visual area with subtle gradient ring */}
+          {/* 3D Spline scene in the visual area */}
           <div className="relative">
-            <div className="pointer-events-none absolute inset-0 -z-0 rounded-3xl bg-gradient-to-br from-cyan-400/10 to-fuchsia-500/10 blur-2xl" />
-            <div className="relative rounded-2xl border border-white/10 bg-gray-900/60 p-6">
-              {/* Laptop graphic above About Me */}
-              <div className="mx-auto -mt-2 mb-4 flex h-14 w-14 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-cyan-300 shadow-inner">
-                <Laptop size={26} />
-              </div>
-              <h3 className="text-lg font-semibold">About Me</h3>
-              <p className="mt-2 text-slate-300">
-                I balance design thinking with practical engineering to ship calm, accessible, and fast user experiences across web and mobile.
-              </p>
-              <ul className="mt-4 list-disc space-y-1 pl-5 text-slate-300">
-                <li>Focus: UI/UX, Frontend, Mobile</li>
-                <li>Stack: React, React Native, Flutter, JS, Python</li>
-                <li>Open to internships and freelance collaborations</li>
-              </ul>
+            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-cyan-400/10 to-fuchsia-500/10 blur-2xl" />
+            <div className="relative h-80 w-full overflow-hidden rounded-2xl border border-white/10 bg-gray-900/60 shadow-xl md:h-[420px]">
+              <Spline
+                scene="https://prod.spline.design/fA4LwfT7IUUelEGO/scene.splinecode"
+                style={{ width: '100%', height: '100%' }}
+              />
             </div>
           </div>
         </div>
