@@ -84,43 +84,43 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white">
+    <section id="home" className="relative min-h-[90vh] w-full overflow-hidden bg-gradient-to-b from-gray-950 via-gray-900 to-gray-900 text-white">
       <div className="absolute inset-0">
-        <Spline scene="https://prod.spline.design/VJLoxp84lCdVfdZu/scene.splinecode" style={{ width: '100%', height: '100%' }} />
+        {/* Laptop Spline scene */}
+        <Spline scene="https://prod.spline.design/9LqvE3h3k3QHO2kP/scene.splinecode" style={{ width: '100%', height: '100%' }} />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-900/40 to-transparent" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="max-w-3xl">
-          <p className="mb-3 text-sm uppercase tracking-widest text-cyan-300/90">Portfolio • Interactive • Modern</p>
+          <p className="mb-3 text-sm uppercase tracking-widest text-cyan-300/90">UI UX Designer • Frontend Developer</p>
           <h1 className="font-geist text-4xl font-semibold leading-tight sm:text-5xl md:text-6xl">
             Hi, I’m Naman Sinha
           </h1>
-          <p className="mt-3 text-lg text-slate-200">
-            UI/UX Designer & Frontend Developer crafting playful, performant, and people-first digital products. I turn ideas into elegant, interactive experiences across web and mobile.
+          <p className="mt-3 text-lg text-gray-200">
+            UI/UX Designer and Frontend Developer focused on calm, accessible, and high-performance interfaces. I shape ideas into elegant products for the web and mobile.
           </p>
 
-        
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-slate-200">
-            <a href="mailto:get2naman@gmail.com" className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur hover:bg-white/20">
+          <div className="mt-6 flex flex-wrap items-center gap-3 text-sm text-gray-200">
+            <a href="mailto:get2naman@gmail.com" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur hover:bg-white/10">
               <Mail size={16} /> get2naman@gmail.com
             </a>
-            <a href="tel:+918925474810" className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur hover:bg-white/20">
+            <a href="tel:+918925474810" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur hover:bg-white/10">
               <Phone size={16} /> +91 8925474810
             </a>
-            <a href="https://github.com/get2naman-bit" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur hover:bg-white/20">
+            <a href="https://github.com/get2naman-bit" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur hover:bg-white/10">
               <Github size={16} /> GitHub
             </a>
-            <a href="https://linkedin.com/in/naman-sinha-986511248" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 backdrop-blur hover:bg-white/20">
+            <a href="https://linkedin.com/in/naman-sinha-986511248" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur hover:bg-white/10">
               <Linkedin size={16} /> LinkedIn
             </a>
           </div>
 
           <div className="mt-7 flex flex-wrap gap-4">
-            <button onClick={handleDownload} className="inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 font-semibold text-slate-900 shadow-lg shadow-cyan-400/30 transition hover:bg-cyan-300">
+            <button onClick={handleDownload} className="inline-flex items-center gap-2 rounded-lg bg-cyan-400 px-5 py-3 font-semibold text-gray-900 shadow-lg shadow-cyan-400/30 transition hover:bg-cyan-300">
               <Download size={18} /> Download Resume
             </button>
-            <a href="#projects" className="rounded-lg border border-white/20 px-5 py-3 font-medium text-white/90 transition hover:bg-white/10">View Projects</a>
+            <a href="#projects" className="rounded-lg border border-white/10 bg-white/5 px-5 py-3 font-medium text-white/90 transition hover:bg-white/10">View Projects</a>
           </div>
         </div>
       </div>
